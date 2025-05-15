@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Added viewport meta tag -->
+  <title>Attendance Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    h1 { text-align: center; }
+    form { margin-bottom: 20px; }
+    ul { list-style-type: none; padding: 0; }
+    li { margin: 5px 0; }
+  </style>
+</head>
+<body>
+  <h1>Attendance Tracker</h1>
+  <h3>Add Subject</h3>
+  <form id="subject-form">
+    <input type="text" id="subject-name" placeholder="Subject Name" required>
+    <button type="submit">Add</button>
+  </form>
+
+  <h3>Mark Attendance</h3>
+  <form id="attendance-form">
+    <select id="attendance-subject"></select>
+    <input type="date" id="attendance-date" required>
+    <select id="attendance-status" required>
+      <option value="present">Present</option>
+      <option value="absent">Absent</option>
+    </select>
+    <button type="submit">Submit</button>
+  </form>
+
+  <h3>Subjects</h3>
+  <ul id="subjects-ul"></ul>
+
+  <script src="script.js"></script>
+</body>
+</html>
