@@ -10,7 +10,9 @@ const PORT = 3000;
 // Connect to MongoDB
 connectDB();
 
-app.use(cors());
+// Allow requests from your frontend's domain
+app.use(cors({ origin: "https://attendance-tracker-pi.vercel.app/" }));
+
 app.use(bodyParser.json());
 app.use("/api", attendanceRoutes);
 

@@ -1,3 +1,5 @@
+const BACKEND_URL = "https://attendance-tracker-2yxg.onrender.com";
+
 const form = document.getElementById("subject-form");
 const subjectNameInput = document.getElementById("subject-name");
 const subjectsList = document.getElementById("subjects-ul");
@@ -5,7 +7,7 @@ const subjectsList = document.getElementById("subjects-ul");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const name = subjectNameInput.value;
-  fetch("http://localhost:3000/api/subjects", {
+  fetch(`${BACKEND_URL}/api/subjects`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name }),
@@ -25,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function fetchSubjects() {
-  fetch("http://localhost:3000/api/subjects")
+  fetch(`${BACKEND_URL}/api/subjects`)
     .then((res) => {
       if (!res.ok) throw new Error("Failed to fetch subjects");
       return res.json();
@@ -51,7 +53,7 @@ function fetchSubjects() {
         subjectsList.appendChild(li);
 
         // Fetch attendance percentage
-        fetch(`http://localhost:3000/api/attendance-percentage/${sub._id}`) // Use `_id`
+        fetch(`${BACKEND_URL}/api/attendance-percentage/${sub._id}`) // Use `_id`
           .then((res) => {
             if (!res.ok)
               throw new Error("Failed to fetch attendance percentage");
@@ -66,7 +68,7 @@ function fetchSubjects() {
           );
 
         // Fetch attendance summary
-        fetch(`http://localhost:3000/api/attendance-summary/${sub._id}`) // Use `_id`
+        fetch(`${BACKEND_URL}/api/attendance-summary/${sub._id}`) // Use `_id`
           .then((res) => {
             if (!res.ok) throw new Error("Failed to fetch attendance summary");
             return res.json();
@@ -94,7 +96,7 @@ attendanceForm.addEventListener("submit", (e) => {
   const date = dateInput.value;
   const status = statusSelect.value;
 
-  fetch("http://localhost:3000/api/attendance", {
+  fetch(`${BACKEND_URL}/api/attendance`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ subject_id, date, status }),
@@ -108,7 +110,7 @@ attendanceForm.addEventListener("submit", (e) => {
 });
 
 function populateSubjectsForAttendance() {
-  fetch("http://localhost:3000/api/subjects")
+  fetch(`${BACKEND_URL}/api/subjects`)
     .then((res) => {
       if (!res.ok) throw new Error("Failed to fetch subjects");
       return res.json();
